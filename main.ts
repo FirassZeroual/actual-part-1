@@ -1,48 +1,25 @@
-function PLOT () {
-    for (let index = 0; index <= END; index++) {
-        led.plot(4, 4)
+let END = 24
+while (END > 0) {
+    for (let index = 0; index < 25; index++) {
+        for (let index2 = 0; index2 <= END; index2++) {
+            led.plot(index2 % 5, index2 / 5)
+            basic.pause(100)
+            led.unplot(index2 % 5, index2 / 5)
+        }
+        led.plot(END % 5, END / 5)
+        END += -1
     }
 }
-let END = 0
 END = 24
 while (END > 0) {
-    for (let index = 0; index < 2; index++) {
-        for (let index = 0; index <= END; index++) {
-            led.plot(index % 5, index / 5)
+    for (let index = 0; index < 25; index++) {
+        for (let index4 = 0; index4 <= END; index4++) {
+            led.unplot(index4 % 5, index4 / 5)
             basic.pause(100)
-            led.unplot(index % 5, index / 5)
+            led.plot(index4 / 5, index4 % 5)
         }
-        PLOT()
+        led.unplot(END % 5, END / 5)
         END += -1
     }
-    led.plot(3, 4)
-    for (let index = 0; index < 2; index++) {
-        for (let index = 0; index <= END; index++) {
-            led.plot(index % 5, index / 5)
-            basic.pause(100)
-            led.unplot(index % 5, index / 5)
-        }
-        PLOT()
-        END += -1
-    }
-    led.plot(2, 4)
-    for (let index = 0; index <= END; index++) {
-        led.plot(index % 5, index / 5)
-        basic.pause(100)
-        led.unplot(index % 5, index / 5)
-    }
-    PLOT()
-    END += -1
-    led.plot(1, 4)
-    for (let index = 0; index <= END; index++) {
-        led.plot(index % 5, index / 5)
-        basic.pause(100)
-        led.unplot(index % 5, index / 5)
-    }
-    PLOT()
-    END += -1
-    led.plot(0, 4)
 }
-basic.forever(function () {
-	
-})
+basic.showString("The end!",50)
